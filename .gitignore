@@ -38,6 +38,7 @@ next-env.d.ts
 
 #prisma
 /prisma/data.db
-/prisma/dev.db
 /prisma/data.db-journal
+/prisma/dev.db
+prisma/dev.db-journal
 /tests/prisma
