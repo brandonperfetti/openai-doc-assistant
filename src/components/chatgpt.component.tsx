@@ -88,55 +88,55 @@ export const ChatgptComponent = ({ list }: { list: ExtendedAssistant[] }) => {
 	}, [])
 
 	return (
-		<div className="border border-black/50 rounded-2xl flex flex-col max-h-[80vh] overflow-auto">
-			<div className="border-b border-b-black/50 h-[60px] gap-3 px-3 flex items-center">
-				<div className="flex mx-auto my-4">
-					<div className="pr-4 py-2">Docs:</div>
-					<div>
-						{list.filter(f => !f.pending).length > 0 ? (
-							<select
-								ref={url}
-								className="border border-black/20 rounded-xl p-2"
-								onChange={handleDocChange}
-							>
-								{list
-									.filter(f => !f.pending)
-									.map(val => (
-										<option key={val.id} value={val.id}>
-											{val.url}
-										</option>
-									))}
-							</select>
-						) : (
-							<div className="pt-2">
-								<p>No documentation available.</p>
-							</div>
-						)}
-					</div>
+		<>
+			<div className="flex mx-auto pb-2">
+				<div className="pr-4 py-2">Docs:</div>
+				<div>
+					{list.filter(f => !f.pending).length > 0 ? (
+						<select
+							ref={url}
+							className="border border-black/20 rounded-xl p-2"
+							onChange={handleDocChange}
+						>
+							{list
+								.filter(f => !f.pending)
+								.map(val => (
+									<option key={val.id} value={val.id}>
+										{val.url}
+									</option>
+								))}
+						</select>
+					) : (
+						<div className="pt-2">
+							<p>No documentation available.</p>
+						</div>
+					)}
 				</div>
 			</div>
-			<div className="flex-1 flex flex-col gap-3 py-3 w-full min-h-[500px] max-h-[1000px] overflow-y-auto overflow-x-hidden messages-list">
-				{messagesList.map((val, index) => (
-					<div
-						key={index}
-						className={`flex border-b border-b-black/20 pb-3 px-3`}
-					>
-						<div className="w-full">
-							{val.message ? (
-								<Markdown>{val.message}</Markdown>
-							) : (
-								<MessageComponent
-									eventId={val.eventId!}
-									onFinish={setThreadId}
-								/>
-							)}
+			<div className="border border-black/50 rounded-2xl flex flex-col max-h-[60vh] overflow-auto">
+				<div className="flex-1 flex flex-col gap-3 py-2 w-full min-h-[400px] max-h-[1000px] overflow-y-auto overflow-x-hidden messages-list">
+					{messagesList.map((val, index) => (
+						<div
+							key={index}
+							className={`flex border-b border-b-black/20 pb-3 px-3`}
+						>
+							<div className="w-full">
+								{val.message ? (
+									<Markdown>{val.message}</Markdown>
+								) : (
+									<MessageComponent
+										eventId={val.eventId!}
+										onFinish={setThreadId}
+									/>
+								)}
+							</div>
 						</div>
-					</div>
-				))}
-				<div ref={messagesEndRef} /> {/* Invisible element at the bottom */}
+					))}
+					<div ref={messagesEndRef} /> {/* Invisible element at the bottom */}
+				</div>
 			</div>
 			<form onSubmit={submitForm}>
-				<div className="border-t border-t-black/50 gap-3 p-4 flex items-center">
+				<div className=" gap-3 py-4 flex items-center">
 					<div className="flex-1">
 						<input
 							value={message}
@@ -155,6 +155,6 @@ export const ChatgptComponent = ({ list }: { list: ExtendedAssistant[] }) => {
 					</div>
 				</div>
 			</form>
-		</div>
+		</>
 	)
 }

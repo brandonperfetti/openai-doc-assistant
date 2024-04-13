@@ -57,7 +57,7 @@ export default function Main({ list }: { list: ExtendedAssistant[] }) {
 		<TriggerProvider
 			publicApiKey={process.env.NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY!}
 		>
-			<div className="w-full max-w-2xl mx-auto p-6 flex flex-col gap-4">
+			<div className="w-full max-w-2xl mx-auto p-6 flex flex-col gap-2">
 				<form
 					className="flex items-center space-x-4"
 					onSubmit={handleSubmit(submit)}
