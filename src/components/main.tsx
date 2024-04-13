@@ -84,7 +84,7 @@ export default function Main({ list }: { list: ExtendedAssistant[] }) {
 						/>
 					))}
 				</div>
-				{assistantState.filter(f => !f.pending).length > 0 && (
+				{assistantState.filter(f => !f.pending) && (
 					<ChatgptComponent list={assistantState} />
 				)}
 			</div>

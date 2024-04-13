@@ -93,19 +93,25 @@ export const ChatgptComponent = ({ list }: { list: ExtendedAssistant[] }) => {
 				<div className="flex mx-auto my-4">
 					<div className="pr-4 py-2">Docs:</div>
 					<div>
-						<select
-							ref={url}
-							className="border border-black/20 rounded-xl p-2"
-							onChange={handleDocChange}
-						>
-							{list
-								.filter(f => !f.pending)
-								.map(val => (
-									<option key={val.id} value={val.id}>
-										{val.url}
-									</option>
-								))}
-						</select>
+						{list.filter(f => !f.pending).length > 0 ? (
+							<select
+								ref={url}
+								className="border border-black/20 rounded-xl p-2"
+								onChange={handleDocChange}
+							>
+								{list
+									.filter(f => !f.pending)
+									.map(val => (
+										<option key={val.id} value={val.id}>
+											{val.url}
+										</option>
+									))}
+							</select>
+						) : (
+							<div className="pt-2">
+								<p>No documentation available.</p>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

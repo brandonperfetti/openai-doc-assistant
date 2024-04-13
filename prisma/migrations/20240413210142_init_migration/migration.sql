@@ -1,16 +1,20 @@
 -- CreateTable
 CREATE TABLE "Docs" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL NOT NULL,
     "content" TEXT NOT NULL,
     "url" TEXT NOT NULL,
-    "identifier" TEXT NOT NULL
+    "identifier" TEXT NOT NULL,
+
+    CONSTRAINT "Docs_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Assistant" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL NOT NULL,
     "aId" TEXT NOT NULL,
-    "url" TEXT NOT NULL
+    "url" TEXT NOT NULL,
+
+    CONSTRAINT "Assistant_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

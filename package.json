@@ -1,42 +1,43 @@
 {
-	"name": "openai-assistant",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "npx prisma generate && npx prisma migrate deploy && next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"@prisma/client": "^5.12.1",
-		"@trigger.dev/nextjs": "^2.3.18",
-		"@trigger.dev/openai": "^2.3.18",
-		"@trigger.dev/react": "^2.3.18",
-		"@trigger.dev/sdk": "^2.3.18",
-		"@types/lodash": "^4.17.0",
-		"jsdom": "^24.0.0",
-		"lodash": "^4.17.21",
-		"next": "14.1.4",
-		"react": "^18",
-		"react-dom": "^18",
-		"react-hook-form": "^7.51.2",
-		"react-markdown": "^9.0.1"
-	},
-	"devDependencies": {
-		"@types/jsdom": "^21.1.6",
-		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
-		"autoprefixer": "^10.0.1",
-		"eslint": "^8",
-		"eslint-config-next": "14.1.4",
-		"postcss": "^8",
-		"prisma": "^5.12.1",
-		"tailwindcss": "^3.3.0",
-		"typescript": "^5"
-	},
-	"trigger.dev": {
-		"endpointId": "openai-assistant-_q3c"
-	}
+  "name": "openai-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.12.1",
+    "@trigger.dev/nextjs": "^2.3.18",
+    "@trigger.dev/openai": "^2.3.18",
+    "@trigger.dev/react": "^2.3.18",
+    "@trigger.dev/sdk": "^2.3.18",
+    "@types/lodash": "^4.17.0",
+    "@vercel/postgres": "^0.8.0",
+    "jsdom": "^24.0.0",
+    "lodash": "^4.17.21",
+    "next": "14.1.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.51.2",
+    "react-markdown": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
+    "postcss": "^8",
+    "prisma": "^5.12.1",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  },
+  "trigger.dev": {
+    "endpointId": "openai-assistant-_q3c"
+  }
 }

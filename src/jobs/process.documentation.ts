@@ -110,7 +110,7 @@ client.defineJob({
 					/(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/g
 				const identifier = makeId(5)
 				const data = await (await fetch(getSiteMap)).text()
-				console.log(data)
+				// console.log(data)
 				return {
 					identifier,
 					list: chunk(
@@ -158,26 +158,26 @@ client.defineJob({
 		// Create a temporary file path
 		const tempFilePath = join(tmpdir(), `documentation-${identifier}.md`)
 
-		console.log(`Data to be written: ${data.substring(0, 500)}`) // Log a portion of the data to avoid overwhelming the console
+		// console.log(`Data to be written: ${data.substring(0, 500)}`) // Log a portion of the data to avoid overwhelming the console
 
 		// Instead of fetching all data and writing it once, use the new function
 		await fetchAndProcessDataInBatches(identifier, tempFilePath)
 
-		console.log(`Markdown file created at: ${tempFilePath}`)
+		// console.log(`Markdown file created at: ${tempFilePath}`)
 
 		// Read back the first few lines to log them for verification
 		const fileContent = await readFileAsync(tempFilePath, 'utf8')
 		const previewLines = fileContent.split('\n').slice(0, 10).join('\n') // Adjust the number of lines as needed
 
-		console.log(`Preview of Markdown file content:\n${previewLines}`)
+		// console.log(`Preview of Markdown file content:\n${previewLines}`)
 
 		// Get file stats
 		const stats = await statAsync(tempFilePath)
-		console.log(`File size: ${stats.size} bytes`)
+		// console.log(`File size: ${stats.size} bytes`)
 
 		// Create a stream for the file
 		const fileStream = createReadStream(tempFilePath)
-		console.log(`Stream created for file upload: ${tempFilePath}`)
+		// console.log(`Stream created for file upload: ${tempFilePath}`)
 
 		// We upload the data to OpenAI with all the content
 		const file = await io.openai.files.createAndWaitForProcessing(
@@ -249,12 +249,12 @@ const processContent = client.defineJob({
 		}),
 	}),
 	run: async (payload, io, ctx) => {
-		console.log(`Processing content for URL: ${payload.url}`) // Log the URL being processed
+		// console.log(`Processing content for URL: ${payload.url}`) // Log the URL being processed
 		return io.runTask('grab-content', async () => {
 			try {
 				// We first grab a raw html of the content from the website
 				const data = await (await fetch(payload.url)).text()
-				console.log(`Fetched content for URL: ${payload.url}`) // Success log for fetching
+				// console.log(`Fetched content for URL: ${payload.url}`) // Success log for fetching
 
 				// We load it with JSDOM so we can manipulate it
 				const dom = new JSDOM(data)
@@ -293,7 +293,7 @@ const processContent = client.defineJob({
             ----------------------------------
             `
 
-				console.log(`Processed content for URL: ${payload.url}`) // Success log for processing
+				// console.log(`Processed content for URL: ${payload.url}`) // Success log for processing
 
 				// We save it to our database
 				await prisma.docs.upsert({
@@ -310,7 +310,7 @@ const processContent = client.defineJob({
 						identifier: payload.identifier,
 					},
 				})
-				console.log(`Saved content to database for URL: ${payload.url}`) // Success log for database operation
+				// console.log(`Saved content to database for URL: ${payload.url}`) // Success log for database operation
 			} catch (e) {
 				console.error(`Error processing content for URL: ${payload.url}`, e) // Error logging
 			}
