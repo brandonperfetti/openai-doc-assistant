@@ -25,3 +25,4 @@ CREATE INDEX "Docs_identifier_idx" ON "Docs"("identifier");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Assistant_url_key" ON "Assistant"("url");
+
